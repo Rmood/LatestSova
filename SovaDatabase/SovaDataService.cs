@@ -27,6 +27,23 @@ namespace SovaDatabase
             }
         }
 
+        public PagedList<Comment> GetComments(ResourceParameters resourceParameters)
+        {
+            using (var context = new SovaContext())
+            {
+                var data = context.Comments.OrderBy(x => x.Id);
+                return PagedList<Comment>.Create(data, resourceParameters.PageNumber, resourceParameters.PageSize);
+            }
+        }
+
+        public Comment GetComment(int id)
+        {
+            using (var context = new SovaContext())
+            {
+                return context.Comments.Find(id);
+            }
+        }
+
         public PagedList<SovaUser> GetSovaUsers(ResourceParameters resourceParameters)
         {
             using (var context = new SovaContext())

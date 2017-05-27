@@ -8,7 +8,6 @@ namespace Webservice.Models
 {
     public class SovaUserListModel : LinkedResourceModel
     {
-        //public int Id { get; set; }
         public string Nick { get; set; }
         public string Country { get; set; }
     }

@@ -13,6 +13,7 @@ namespace SovaDatabase
         public DbSet<Post> Posts { get; set; }
         public DbSet<SovaUser> SovaUsers { get; set; }
         public DbSet<Posttype> Posttypes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -41,6 +42,13 @@ namespace SovaDatabase
             modelBuilder.Entity<SovaUser>().Property(x => x.Nick).HasColumnName("nickname");
             modelBuilder.Entity<SovaUser>().Property(x => x.Birthday).HasColumnName("dateofbirth");
             modelBuilder.Entity<SovaUser>().Property(x => x.Private).HasColumnName("isprivate");
+
+            //Comments Table
+            modelBuilder.Entity<Comment>().ToTable("comments");
+            modelBuilder.Entity<Comment>().Property(x => x.Id).HasColumnName("comment_id");
+            modelBuilder.Entity<Comment>().Property(x => x.PostId).HasColumnName("post_id");
+            modelBuilder.Entity<Comment>().Property(x => x.CreationDate).HasColumnName("creation_date");
+            modelBuilder.Entity<Comment>().Property(x => x.UserId).HasColumnName("user_id");
         }
 
     }

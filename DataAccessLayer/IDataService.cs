@@ -12,6 +12,8 @@ namespace DataAccessLayer
     {
         PagedList<Post> GetPosts(ResourceParameters resourceParameters);
         Post GetPost(int id);
+        PagedList<Comment> GetComments(ResourceParameters resourceParameters);
+        Comment GetComment(int id);
         PagedList<SovaUser> GetSovaUsers(ResourceParameters resourceParameters);
         SovaUser GetSovaUser(int id);
         void CreateSovaUser(SovaUser sovaUser);

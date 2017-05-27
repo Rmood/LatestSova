@@ -8,7 +8,6 @@ namespace Webservice.Models
 {
     public class PostModel : LinkedResourceModel
     {
-        //public int Id { get; set; }
         public int PostTypeId { get; set; }
         public int ParentId { get; set; }
         public int AcceptedAnswerId { get; set; }
