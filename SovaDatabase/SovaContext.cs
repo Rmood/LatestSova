@@ -14,6 +14,7 @@ namespace SovaDatabase
         public DbSet<SovaUser> SovaUsers { get; set; }
         public DbSet<Posttype> Posttypes { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<History> Histories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -49,6 +50,10 @@ namespace SovaDatabase
             modelBuilder.Entity<Comment>().Property(x => x.PostId).HasColumnName("post_id");
             modelBuilder.Entity<Comment>().Property(x => x.CreationDate).HasColumnName("creation_date");
             modelBuilder.Entity<Comment>().Property(x => x.UserId).HasColumnName("user_id");
+
+            //History Table
+            modelBuilder.Entity<History>().ToTable("history");
+
         }
 
     }

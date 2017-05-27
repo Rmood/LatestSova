@@ -19,6 +19,8 @@ namespace DataAccessLayer
         void CreateSovaUser(SovaUser sovaUser);
         void UpdateSovaUser(SovaUser sovaUser);
         void DeleteSovaUser(SovaUser sovaUser);
+        PagedList<History> GetHistories(ResourceParameters resourceParameters);
+        History GetHistory(int userId, int postId);
         IList<Posttype> GetPosttypes();
         Posttype GetPosttype(int id);
         int GetSovaUserCount();
