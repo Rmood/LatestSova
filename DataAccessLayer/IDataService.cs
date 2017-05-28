@@ -23,6 +23,8 @@ namespace DataAccessLayer
         History GetHistory(int userId, int postId);
         PagedList<User> GetUsers(ResourceParameters resourceParameters);
         User GetUser(int id);
+        PagedList<Tag> GetTags(ResourceParameters resourceParameters);
+        Tag GetTag(int id);
         void CreateHistory(History history);
         void UpdateHistory(History history);
         void DeleteHistory(History history);

@@ -105,6 +105,23 @@ namespace SovaDatabase
             }
         }
 
+        public PagedList<Tag> GetTags(ResourceParameters resourceParameters)
+        {
+            using (var context = new SovaContext())
+            {
+                var data = context.Tags.OrderBy(x => x.Id);
+                return PagedList<Tag>.Create(data, resourceParameters.PageNumber, resourceParameters.PageSize);
+            }
+        }
+
+        public Tag GetTag(int id)
+        {
+            using (var context = new SovaContext())
+            {
+                return context.Tags.Find(id);
+            }
+        }
+
         public PagedList<SovaUser> GetSovaUsers(ResourceParameters resourceParameters)
         {
             using (var context = new SovaContext())
