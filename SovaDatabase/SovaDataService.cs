@@ -27,6 +27,50 @@ namespace SovaDatabase
             }
         }
 
+        public PagedList<History> GetHistories(ResourceParameters resourceParameters)
+        {
+            using (var context = new SovaContext())
+            {
+                var data = context.Histories.OrderBy(x => x.UserId);
+                return PagedList<History>.Create(data, resourceParameters.PageNumber, resourceParameters.PageSize);
+            }
+        }
+
+        public History GetHistory(int userId, int postId)
+        {
+            using (var context = new SovaContext())
+            {
+                return context.Histories.Find(userId);
+            }
+        }
+
+        public void CreateHistory(History history)
+        {
+            using (var context = new SovaContext())
+            {
+                context.Histories.Add(history);
+                context.SaveChanges();
+            }
+        }
+
+        public void UpdateHistory(History history)
+        {
+            using (var context = new SovaContext())
+            {
+                context.Histories.Update(history);
+                context.SaveChanges();
+            }
+        }
+
+        public void DeleteHistory(History history)
+        {
+            using (var context = new SovaContext())
+            {
+                context.Histories.Remove(history);
+                context.SaveChanges();
+            }
+        }
+
         public PagedList<Comment> GetComments(ResourceParameters resourceParameters)
         {
             using (var context = new SovaContext())
@@ -111,5 +155,7 @@ namespace SovaDatabase
                 return context.Posttypes.Find(id);
             }
         }
+
+        
     }
 }

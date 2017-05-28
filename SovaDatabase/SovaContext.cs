@@ -53,6 +53,7 @@ namespace SovaDatabase
 
             //History Table
             modelBuilder.Entity<History>().ToTable("history");
+            modelBuilder.Entity<History>().HasKey("UserId", "PostId");
 
         }
 
