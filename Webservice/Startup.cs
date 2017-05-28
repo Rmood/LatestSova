@@ -60,6 +60,7 @@ namespace Webservice
                 cfg.CreateMap<SovaUser, SovaUserModel>();
                 cfg.CreateMap<Comment, CommentModel>();
                 cfg.CreateMap<History, HistoryModel>();
+                cfg.CreateMap<User, UserModel>();
             });
 
             if (env.IsDevelopment())

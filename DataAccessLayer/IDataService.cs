@@ -21,6 +21,8 @@ namespace DataAccessLayer
         void DeleteSovaUser(SovaUser sovaUser);
         PagedList<History> GetHistories(ResourceParameters resourceParameters);
         History GetHistory(int userId, int postId);
+        PagedList<User> GetUsers(ResourceParameters resourceParameters);
+        User GetUser(int id);
         void CreateHistory(History history);
         void UpdateHistory(History history);
         void DeleteHistory(History history);

@@ -8,6 +8,9 @@ namespace Webservice.Models
 {
     public class UserModel : LinkedResourceModel
     {
-        public int MyProperty { get; set; }
+        public string Name { get; set; }
+        public DateTime CreationDate { get; set; }
+        public string Location { get; set; }
+        public int Age { get; set; }
     }
 }

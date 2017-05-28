@@ -9,8 +9,9 @@ namespace DomainModel
     public class User
     {
         public int Id { get; set; }
-        public int MyProperty { get; set; }
-
-
-    }
+        public string Name { get; set; }
+        public DateTime CreationDate { get; set; }
+        public string Location { get; set; }
+        public int? Age { get; set; }
+    }   
 }
