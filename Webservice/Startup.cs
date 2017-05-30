@@ -62,6 +62,7 @@ namespace Webservice
                 cfg.CreateMap<History, HistoryModel>();
                 cfg.CreateMap<User, UserModel>();
                 cfg.CreateMap<Tag, TagModel>();
+                cfg.CreateMap<Taglink, TaglinkModel>();
             });
 
             if (env.IsDevelopment())

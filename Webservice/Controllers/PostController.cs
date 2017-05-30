@@ -43,6 +43,7 @@ namespace Webservice.Controllers
             return new
             {
                 Values = data.Select(CreateLinks<PostModel>),
+                //Tags = data.Select((x => x.Tags).ToList()),
                 Links = CreateLinks(data)
             };
         }

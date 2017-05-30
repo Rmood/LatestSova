@@ -17,6 +17,7 @@ namespace SovaDatabase
         public DbSet<History> Histories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Taglink> Taglinks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -55,7 +56,8 @@ namespace SovaDatabase
 
             //History Table
             modelBuilder.Entity<History>().ToTable("history");
-            modelBuilder.Entity<History>().HasKey("UserId", "PostId");
+            modelBuilder.Entity<History>().HasKey(x => new { x.UserId, x.PostId });
+            // modelBuilder.Entity<History>().Ignore(x => x.Access)
 
             //Users Table
             modelBuilder.Entity<User>().ToTable("users");
@@ -63,6 +65,12 @@ namespace SovaDatabase
 
             //Tags Table
             modelBuilder.Entity<Tag>().ToTable("tags");
+
+            //Taglink Table
+            modelBuilder.Entity<Taglink>().ToTable("taglink");
+            modelBuilder.Entity<Taglink>().HasKey(x => new { x.PostId, x.TagId });
+            modelBuilder.Entity<Taglink>().Property(x => x.PostId).HasColumnName("post_id");
+            modelBuilder.Entity<Taglink>().Property(x => x.TagId).HasColumnName("tag_id");
         }
 
     }

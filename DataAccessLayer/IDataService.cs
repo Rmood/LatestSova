@@ -25,6 +25,8 @@ namespace DataAccessLayer
         User GetUser(int id);
         PagedList<Tag> GetTags(ResourceParameters resourceParameters);
         Tag GetTag(int id);
+        PagedList<Taglink> GetTaglinks(ResourceParameters resourceParameters);
+        //PagedList<Tag> GetTaglink(int postId, ResourceParameters resourceParameters);
         void CreateHistory(History history);
         void UpdateHistory(History history);
         void DeleteHistory(History history);

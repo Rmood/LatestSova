@@ -18,5 +18,6 @@ namespace DomainModel
         public DateTime? ClosedDate { get; set; }
         public string Title { get; set; }
         public int UserId { get; set; }
+        public IList<Taglink> Tags { get; set; }
     }
 }

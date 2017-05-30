@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccessLayer;
 using DomainModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace SovaDatabase
 {
@@ -23,7 +24,11 @@ namespace SovaDatabase
         {
             using (var context = new SovaContext())
             {
-                return context.Posts.Find(id);
+                var p =  context.Posts.Include(x => x.Tags).ThenInclude(y => y.Tag)
+                    .FirstOrDefault(x => x.Id == id);
+                //p.Tags.Select(x => x.Value);
+                var t = p.Tags.Select(x => x.Tag.Keyword).ToList();
+                return p;
             }
         }
 
@@ -119,6 +124,26 @@ namespace SovaDatabase
             using (var context = new SovaContext())
             {
                 return context.Tags.Find(id);
+            }
+        }
+
+        public PagedList<Taglink> GetTaglinks(ResourceParameters resourceParameters)
+        {
+            using (var context = new SovaContext())
+            {
+                var data = context.Taglinks.OrderBy(x => x.PostId);
+                return PagedList<Taglink>.Create(data, resourceParameters.PageNumber, resourceParameters.PageSize);
+            }
+        }
+
+        public PagedList<Tag> GetTaglink(int postId, ResourceParameters resourceParameters)
+        {
+            using (var context = new SovaContext())
+            {
+                return null;
+                //var data = context.Taglinks.OrderBy(x => x.PostId).TakeWhile(x => x.PostId == postId);
+                //var test = context.Tags.TakeWhile(x => x.Id == (data.Any(y => y.postId));
+                //return PagedList<Tag>.Create(test, resourceParameters.PageNumber, resourceParameters.PageSize);
             }
         }
 
