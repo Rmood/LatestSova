@@ -23,7 +23,7 @@ namespace SovaDatabase
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseMySql("server=localhost;database=stackoverflow_sample_universal;uid=root;pwd=1234");
+            optionsBuilder.UseMySql("server=localhost;database=stackoverflow_sample_universal;uid=Rmood;pwd=1234");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
